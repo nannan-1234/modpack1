@@ -1,0 +1,27 @@
+{
+  "wood": {
+    "ingredient": { "item": "minecraft:sweet_berries" },
+    "reiryoku": 5,
+    "cooldown": 100
+  },
+  "fire": {
+    "ingredient": { "item": "minecraft:wheat" },
+    "reiryoku": 5,
+    "cooldown": 100
+  },
+  "earth": {
+    "ingredient": { "item": "urushi:rice_crop" },
+    "reiryoku": 5,
+    "cooldown": 100
+  },
+  "metal": {
+    "ingredient": { "item": "urushi:green_onion_crop" },
+    "reiryoku": 5,
+    "cooldown": 100
+  },
+  "water": {
+    "ingredient": { "item": "urushi:soy_crop" },
+    "reiryoku": 5,
+    "cooldown": 100
+  }
+}

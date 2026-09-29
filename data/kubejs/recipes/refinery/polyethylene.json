@@ -1,0 +1,15 @@
+{
+  "type": "immersiveengineering:refinery",
+  "catalyst": {
+    "tag": "kubejs:chromatic_steel_catalyst"
+  },
+  "energy": 4800,
+  "input0": {
+    "amount": 250,
+    "tag": "kubejs:ethene"
+  },
+  "result": {
+    "amount": 250,
+    "fluid": "kubejs:polyethylene"
+  }
+}

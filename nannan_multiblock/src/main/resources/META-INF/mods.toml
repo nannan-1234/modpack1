@@ -1,0 +1,35 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+modId="nannan_multiblock"
+version="0.1.0"
+displayName="Nannan's Multiblocks"
+description='''整合包自建多方块结构集合。第一个结构是「相变控制炉」：烧燃料发热、水冷/钠冷控制温度，按温度窗口产出不同物品。设计文档见仓库 docs/multiblock_design.md。'''
+authors="Nannan1234"
+
+[[dependencies.nannan_multiblock]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.nannan_multiblock]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1,1.21)"
+    ordering="NONE"
+    side="BOTH"
+
+# 依赖 Mekanism 的 mekanism.common.* 内部 API 注册多方块：必须锁版本区间。
+[[dependencies.nannan_multiblock]]
+    modId="mekanism"
+    mandatory=true
+    versionRange="[10.4,10.5)"
+    ordering="AFTER"
+    side="BOTH"
+
+# 自绘贴图（2026-09-29）之后不再需要 MekanismGenerators：模型/贴图全部在自己的 assets 里
+# （贴图由 tools/recolor_textures.py 从 Mekanism 的贴图改色生成，MIT 许可，见 README）。

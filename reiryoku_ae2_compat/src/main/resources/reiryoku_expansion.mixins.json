@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8.5",
+  "package": "com.reiryoku_expansion.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "MixinHokoraBlockEntity"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "type": "immersiveengineering:arc_furnace",
+  "input": {
+    "base_ingredient": {
+      "tag": "forge:mushrooms"
+    },
+    "count": 2
+  },
+  "additives": [
+    {
+      "item": "minecraft:nether_brick"
+    },
+    {
+      "item": "minecraft:nether_brick"
+    },
+    {
+      "item": "thermal:blitz_powder"
+    }
+  ],
+  "results": [
+    {
+      "base_ingredient": {
+        "item": "rainbowcompound:warpedite_ingot"
+      },
+      "count": 1
+    }
+  ],
+  "energy": 51200,
+  "time": 100
+}

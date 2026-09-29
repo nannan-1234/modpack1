@@ -1,0 +1,34 @@
+{
+  "type": "miningdim:mining",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "miningdim:mining",
+      "lakes": false,
+      "features": true,
+      "layers": [
+        {
+          "block": "minecraft:end_stone",
+          "height": 64
+        },
+        {
+          "block": "minecraft:netherrack",
+          "height": 100
+        },
+        {
+          "block": "minecraft:deepslate",
+          "height": 50
+        },
+        {
+          "block": "minecraft:stone",
+          "height": 48
+        },
+        {
+          "block": "minecraft:dirt",
+          "height": 3
+        }
+      ],
+      "structure_overrides": []
+    }
+  }
+}

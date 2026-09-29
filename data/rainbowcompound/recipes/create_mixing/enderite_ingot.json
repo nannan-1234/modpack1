@@ -1,0 +1,29 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "tag": "forge:dusts/ender_pearl"
+    },
+    {
+      "tag": "forge:dusts/ender_pearl"
+    },
+    {
+      "tag": "forge:dusts/ender_pearl"
+    },
+    {
+      "tag": "forge:dusts/ender_pearl"
+    },
+    {
+      "tag": "forge:ingots/steel"
+    },
+    {
+      "tag": "forge:ingots/steel"
+    }
+  ],
+  "results": [
+    {
+      "item": "rainbowcompound:enderite_ingot"
+    }
+  ],
+  "heatRequirement": "heated"
+}

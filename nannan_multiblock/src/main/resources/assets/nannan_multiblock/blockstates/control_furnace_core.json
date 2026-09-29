@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "nannan_multiblock:block/control_furnace_core" }
+  }
+}

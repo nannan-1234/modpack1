@@ -1,0 +1,7 @@
+{
+  "type": "phasechange:conversion",
+  "input": { "item": "minecraft:coal" },
+  "output": { "item": "minecraft:charcoal" },
+  "min_temperature": 373.15,
+  "max_temperature": 773
+}

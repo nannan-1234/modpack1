@@ -1,0 +1,30 @@
+{
+  "type": "immersiveengineering:arc_furnace",
+  "input": {
+    "base_ingredient": {
+      "item": "minecraft:ice"
+    },
+    "count": 4
+  },
+  "additives": [
+    {
+      "tag": "forge:ingots/steel"
+    },
+    {
+      "tag": "forge:ingots/steel"
+    },
+    {
+      "item": "thermal:blizz_powder"
+    }
+  ],
+  "results": [
+    {
+      "base_ingredient": {
+        "item": "rainbowcompound:frostite_ingot"
+      },
+      "count": 1
+    }
+  ],
+  "energy": 51200,
+  "time": 100
+}

@@ -1,0 +1,16 @@
+{
+  "item.reiryoku_expansion.reiryoku_cell_housing": "ME Reiryoku Cell Housing",
+
+  "item.reiryoku_expansion.reiryoku_storage_cell_1k": "1k ME Reiryoku Storage Cell",
+  "item.reiryoku_expansion.reiryoku_storage_cell_4k": "4k ME Reiryoku Storage Cell",
+  "item.reiryoku_expansion.reiryoku_storage_cell_16k": "16k ME Reiryoku Storage Cell",
+  "item.reiryoku_expansion.reiryoku_storage_cell_64k": "64k ME Reiryoku Storage Cell",
+  "item.reiryoku_expansion.reiryoku_storage_cell_256k": "256k ME Reiryoku Storage Cell",
+
+  "key.reiryoku_expansion.reiryoku": "Reiryoku",
+  "key.reiryoku_expansion.wood": "Wood Qi",
+  "key.reiryoku_expansion.fire": "Fire Qi",
+  "key.reiryoku_expansion.earth": "Earth Qi",
+  "key.reiryoku_expansion.metal": "Metal Qi",
+  "key.reiryoku_expansion.water": "Water Qi"
+}

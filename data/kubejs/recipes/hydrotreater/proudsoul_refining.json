@@ -1,0 +1,22 @@
+{
+  "type": "immersivepetroleum:hydrotreater",
+  "energy": 8000,
+  "input": {
+    "amount": 1000,
+    "tag": "kubejs:proudsoufied_dirty_lava"
+  },
+  "result": {
+    "amount": 1500,
+    "fluid": "kubejs:proudsoufied_lava"
+  },
+  "secondary_input": {
+    "amount": 500,
+    "tag": "minecraft:lava"
+  },
+  "secondary_result": {
+    "chance": "1.0",
+    "count": 1,
+    "item": "kubejs:sulfur_rich_ore_powder"
+  },
+  "time": 100
+}

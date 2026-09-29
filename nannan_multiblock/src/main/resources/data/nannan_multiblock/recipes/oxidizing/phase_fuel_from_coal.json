@@ -1,0 +1,5 @@
+{
+  "type": "mekanism:oxidizing",
+  "input": { "ingredient": { "item": "minecraft:coal" } },
+  "output": { "amount": 100, "gas": "nannan_multiblock:phase_fuel" }
+}

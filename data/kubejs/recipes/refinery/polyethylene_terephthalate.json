@@ -1,0 +1,19 @@
+{
+  "type": "immersiveengineering:refinery",
+  "catalyst": {
+    "tag": "kubejs:chromatic_steel_catalyst"
+  },
+  "energy": 9600,
+  "input0": {
+    "amount": 250,
+    "tag": "kubejs:terephthalic_acid"
+  },
+  "input1": {
+    "amount": 250,
+    "tag": "kubejs:ethylene_glycol"
+  },
+  "result": {
+    "amount": 450,
+    "fluid": "kubejs:polyethylene_terephthalate"
+  }
+}

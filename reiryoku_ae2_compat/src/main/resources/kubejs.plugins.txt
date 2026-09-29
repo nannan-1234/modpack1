@@ -1,0 +1,1 @@
+com.reiryoku_expansion.kubejs.ReiryokuKubeJSPlugin

@@ -1,0 +1,7 @@
+{
+  "parent": "nannan_multiblock:block/template/cube_all_led",
+  "textures": {
+    "all": "nannan_multiblock:block/control_furnace_valve_input_fuel",
+    "led": "nannan_multiblock:block/control_furnace_valve_input_fuel_led"
+  }
+}

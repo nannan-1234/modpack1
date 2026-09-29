@@ -1,0 +1,16 @@
+{
+  "type": "immersiveengineering:refinery",
+  "energy": 6400,
+  "input0": {
+    "amount": 250,
+    "tag": "kubejs:ethene"
+  },
+  "input1": {
+    "amount": 250,
+    "tag": "minecraft:water"
+  },
+  "result": {
+    "amount": 500,
+    "fluid": "kubejs:ethylene_glycol"
+  }
+}

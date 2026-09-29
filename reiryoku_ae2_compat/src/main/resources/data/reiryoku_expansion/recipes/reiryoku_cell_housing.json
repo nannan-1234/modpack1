@@ -1,0 +1,37 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "ae2"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "key": {
+          "I": {
+            "item": "urushi:jadeite"
+          },
+          "Q": {
+            "item": "ae2:quartz_glass"
+          },
+          "S": {
+            "item": "urushi:red_urushi_ball"
+          }
+        },
+        "pattern": [
+          "QSQ",
+          "S S",
+          "III"
+        ],
+        "result": {
+          "item": "reiryoku_expansion:reiryoku_cell_housing"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

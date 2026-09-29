@@ -1,0 +1,31 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+modId="openblocks_anvil_compat"
+version="1.0.3"
+displayName="OpenBlocks Anvil Events Compat"
+description='''Fires the Forge AnvilUpdateEvent inside OpenBlocks Reborn's auto anvil so event-driven anvil behaviors (e.g. SlashBlade refine / 精锻) work in the machine.'''
+authors="Nannan1234"
+
+[[dependencies.openblocks_anvil_compat]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.openblocks_anvil_compat]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1,1.21)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.openblocks_anvil_compat]]
+    modId="openblocks_reborn"
+    mandatory=true
+    versionRange="[1.0.2,)"
+    ordering="AFTER"
+    side="BOTH"

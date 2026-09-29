@@ -1,0 +1,17 @@
+{
+  "type": "immersiveengineering:mixer",
+  "energy": 2400,
+  "fluid": {
+    "amount": 500,
+    "tag": "minecraft:lava"
+  },
+  "inputs": [
+    {
+      "item": "kubejs:polymetallic_complex_ore"
+    }
+  ],
+  "result": {
+    "amount": 500,
+    "fluid": "kubejs:dirty_lava"
+  }
+}

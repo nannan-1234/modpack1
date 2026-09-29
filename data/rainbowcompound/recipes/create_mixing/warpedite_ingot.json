@@ -1,0 +1,26 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "tag": "forge:mushrooms"
+    },
+    {
+      "tag": "forge:mushrooms"
+    },
+    {
+      "item": "minecraft:nether_brick"
+    },
+    {
+      "item": "minecraft:nether_brick"
+    },
+    {
+      "item": "thermal:blitz_powder"
+    }
+  ],
+  "results": [
+    {
+      "item": "rainbowcompound:warpedite_ingot"
+    }
+  ],
+  "heatRequirement": "heated"
+}

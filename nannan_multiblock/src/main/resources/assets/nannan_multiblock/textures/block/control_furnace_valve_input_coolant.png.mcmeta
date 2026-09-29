@@ -1,0 +1,1 @@
+{"ctm":{"ctm_version":1,"type":"CTM","layer":"SOLID","textures":["nannan_multiblock:ctm/control_furnace_valve_input_coolant"],"extra":{"connect_to":[{"block":"nannan_multiblock:control_furnace_casing"},{"block":"nannan_multiblock:control_furnace_controller"},{"block":"nannan_multiblock:control_furnace_valve"}]}}}

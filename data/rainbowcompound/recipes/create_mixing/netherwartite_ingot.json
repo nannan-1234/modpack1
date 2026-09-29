@@ -1,0 +1,26 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "minecraft:nether_brick"
+    },
+    {
+      "item": "minecraft:nether_brick"
+    },
+    {
+      "item": "minecraft:nether_wart_block"
+    },
+    {
+      "item": "minecraft:nether_wart_block"
+    },
+    {
+      "item": "thermal:basalz_powder"
+    }
+  ],
+  "results": [
+    {
+      "item": "rainbowcompound:netherwartite_ingot"
+    }
+  ],
+  "heatRequirement": "heated"
+}

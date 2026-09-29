@@ -1,0 +1,22 @@
+{
+  "type": "immersivepetroleum:hydrotreater",
+  "energy": 8000,
+  "input": {
+    "amount": 500,
+    "tag": "kubejs:bio"
+  },
+  "secondary_input": {
+    "amount": 200,
+    "tag": "forge:ethanol"
+  },
+  "result": {
+    "amount": 125,
+    "fluid": "mekanism:ethene"
+  },
+  "secondary_result": {
+    "chance": "1.0",
+    "count": 1,
+    "item": "mekanism:substrate"
+  },
+  "time": 100
+}

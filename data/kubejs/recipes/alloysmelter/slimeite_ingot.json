@@ -1,0 +1,22 @@
+{
+  "type": "immersiveengineering:alloy",
+  "input0": {
+    "base_ingredient": {
+      "item": "minecraft:slime_block"
+    },
+    "count": 2
+  },
+  "input1": {
+    "base_ingredient": {
+      "tag": "forge:ingots/steel"
+    },
+    "count": 2
+  },
+  "result": {
+    "base_ingredient": {
+      "item": "rainbowcompound:slimeite_ingot"
+    },
+    "count": 1
+  },
+  "time": 200
+}

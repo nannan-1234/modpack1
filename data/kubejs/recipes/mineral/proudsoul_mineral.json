@@ -1,0 +1,50 @@
+{
+    "type":"immersiveengineering:mineral_mix",
+    "dimensions":[
+        "minecraft:overworld"
+    ],
+    "fail_chance":0.2,
+    "weight":8,
+    "ores":[
+        {
+            "chance":0.3,
+            "output":{"item": "slashblade_useful_addon:proud_soul_ore"}
+        },
+        {
+            "chance":0.3,
+            "output":{"item": "kablade:chromium_ore"}
+        },
+        {
+            "chance":0.1,
+            "output":{"item": "kablade:aurora_ore"}
+        },
+        {
+            "chance":0.2,
+            "output":{"item":"kablade:molybdenite"}
+        },
+        {
+            "chance":0.01,
+            "output":{"item":"minecraft:ancient_debris"}
+        }
+    ],
+    "spoils": [
+    {
+      "chance": 0.2,
+      "output": {
+        "item": "minecraft:calcite"
+      }
+    },
+    {
+      "chance": 0.6,
+      "output": {
+        "item": "minecraft:amethyst_block"
+      }
+    },
+    {
+      "chance": 0.2,
+      "output": {
+        "item": "minecraft:cobbled_deepslate"
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "type": "immersivepetroleum:distillation",
+  "energy": 48000,
+  "input": {
+    "amount": 1000,
+    "tag": "kubejs:petroleum_gas"
+  },
+  "results": [
+    {
+      "amount": 250,
+      "fluid": "mekanism:ethene"
+    },
+    {
+      "amount": 250,
+      "fluid": "kubejs:propylene"
+    },
+    {
+      "amount": 250,
+      "fluid": "immersivepetroleum:benzol"
+    },
+    {
+      "amount": 250,
+      "fluid":"kubejs:xylene"
+    }
+  ],
+  "time": 20
+}

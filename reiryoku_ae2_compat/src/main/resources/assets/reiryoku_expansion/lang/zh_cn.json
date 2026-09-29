@@ -1,0 +1,16 @@
+{
+  "item.reiryoku_expansion.reiryoku_cell_housing": "ME 灵力元件外壳",
+
+  "item.reiryoku_expansion.reiryoku_storage_cell_1k": "1k ME 灵力存储元件",
+  "item.reiryoku_expansion.reiryoku_storage_cell_4k": "4k ME 灵力存储元件",
+  "item.reiryoku_expansion.reiryoku_storage_cell_16k": "16k ME 灵力存储元件",
+  "item.reiryoku_expansion.reiryoku_storage_cell_64k": "64k ME 灵力存储元件",
+  "item.reiryoku_expansion.reiryoku_storage_cell_256k": "256k ME 灵力存储元件",
+
+  "key.reiryoku_expansion.reiryoku": "灵力",
+  "key.reiryoku_expansion.wood": "木气",
+  "key.reiryoku_expansion.fire": "火气",
+  "key.reiryoku_expansion.earth": "土气",
+  "key.reiryoku_expansion.metal": "金气",
+  "key.reiryoku_expansion.water": "水气"
+}

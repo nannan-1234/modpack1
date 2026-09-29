@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "nannan_multiblock:block/control_furnace_casing"
+  }
+}

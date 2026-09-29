@@ -1,0 +1,28 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "ae2"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "misc",
+        "ingredients": [
+          {
+            "item": "reiryoku_expansion:reiryoku_cell_housing"
+          },
+          {
+            "item": "ae2:cell_component_1k"
+          }
+        ],
+        "result": {
+          "item": "reiryoku_expansion:reiryoku_storage_cell_1k"
+        }
+      }
+    }
+  ]
+}

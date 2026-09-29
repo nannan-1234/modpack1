@@ -1,0 +1,6 @@
+{
+  "parent": "ae2:block/drive/drive_cell",
+  "textures": {
+    "cell": "reiryoku_expansion:block/drive/cells/reiryoku_storage_cell_64k"
+  }
+}

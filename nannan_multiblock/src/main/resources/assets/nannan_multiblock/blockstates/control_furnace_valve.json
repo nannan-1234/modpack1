@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "mode=input_material": { "model": "nannan_multiblock:block/control_furnace_valve_input_material" },
+    "mode=input_fuel": { "model": "nannan_multiblock:block/control_furnace_valve_input_fuel" },
+    "mode=input_coolant": { "model": "nannan_multiblock:block/control_furnace_valve_input_coolant" },
+    "mode=output_product": { "model": "nannan_multiblock:block/control_furnace_valve_output_product" },
+    "mode=output_coolant": { "model": "nannan_multiblock:block/control_furnace_valve_output_coolant" }
+  }
+}

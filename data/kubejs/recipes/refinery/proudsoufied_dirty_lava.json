@@ -1,0 +1,16 @@
+{
+  "type": "immersiveengineering:refinery",
+  "energy": 500,
+  "input0": {
+    "amount": 1000,
+    "tag": "kubejs:dirty_lava"
+  },
+  "input1": {
+    "amount": 100,
+    "tag": "kubejs:excited_proudsoul"
+  },
+  "result": {
+    "amount": 1000,
+    "fluid": "kubejs:proudsoufied_dirty_lava"
+  }
+}

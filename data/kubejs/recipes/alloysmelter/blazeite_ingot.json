@@ -1,0 +1,19 @@
+{
+  "type": "immersiveengineering:alloy",
+  "input0": {
+    "base_ingredient": {
+      "tag": "forge:ingots/steel"
+    },
+    "count": 2
+  },
+  "input1": {
+    "tag": "forge:rods/blaze"
+  },
+  "result": {
+    "base_ingredient": {
+      "item": "rainbowcompound:blazeite_ingot"
+    },
+    "count": 1
+  },
+  "time": 200
+}
