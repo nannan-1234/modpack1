@@ -25,7 +25,8 @@
 const reactionChamberEnergy_s = 100000; // 200000 FE
 const reactionChamberEnergy_m = 1000000;
 const reactionChamberEnergy_l = 10000000;
-const reactionChamberOutputCount = 32;
+// 注意：这个变量在下面的配方里会被临时改写（15 用 8、16 用 64），所以必须是 let
+let reactionChamberOutputCount = 32;
 const Water = { fluidStack: { FluidName: 'minecraft:water', Amount: 100 } };
 const smallBladeIron = { type: 'forge:partial_nbt', item: 'tconstruct:small_blade', nbt: '{Material:"tconstruct:iron"}' };
 const smallBladeSteel = { type: 'forge:partial_nbt', item: 'tconstruct:small_blade', nbt: '{Material:"tconstruct:steel"}' };
@@ -180,7 +181,7 @@ ServerEvents.recipes(event => {
     // 12. 下界疣合金：2 下界砖 + 2 下界疣块 + 岩石粉
     event.custom({
         type: 'advanced_ae:reaction',
-        energy: reactionChamberEnergy,
+        energy: reactionChamberEnergy_s,
         fluid: Water,
         input_items: [
             { amount: 64, ingredient: { item: 'minecraft:nether_brick' } },
@@ -193,7 +194,7 @@ ServerEvents.recipes(event => {
     // 13. 诡异疣合金：2 蘑菇 + 2 下界砖 + 狂风粉
     event.custom({
         type: 'advanced_ae:reaction',
-        energy: reactionChamberEnergy,
+        energy: reactionChamberEnergy_s,
         fluid: Water,
         input_items: [
             { amount: 64, ingredient: { tag: 'forge:mushrooms' } },
@@ -206,7 +207,7 @@ ServerEvents.recipes(event => {
     // 14. 彩虹化合物：可疑的彩色锭 + 耀魂宝珠 + 魂樱钢锭
     event.custom({
         type: 'advanced_ae:reaction',
-        energy: reactionChamberEnergy,
+        energy: reactionChamberEnergy_m,
         fluid: Water,
         input_items: [
             { amount: 32, ingredient: { item: 'rainbowcompound:strange_colored_ingot' } },
@@ -219,7 +220,7 @@ ServerEvents.recipes(event => {
     reactionChamberOutputCount = 8;
     event.custom({
         type:"advanced_ae:reaction",
-        energy:reactionChamberEnergy,
+        energy:reactionChamberEnergy_m,
         fluid:ha_proudsoul("640"),
         input_items:[
             {amount:16,ingredient:{item:'draconicevolution:draconium_core'}},
@@ -233,7 +234,7 @@ ServerEvents.recipes(event => {
     reactionChamberOutputCount = 64;
     event.custom({
         type:"advanced_ae:reaction",
-        energy:reactionChamberEnergy,
+        energy:reactionChamberEnergy_m,
         fluid:ha_proudsoul("1000"),
         input_items:[
             {amount:64,ingredient:{item:"minecraft:stone"}},

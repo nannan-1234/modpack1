@@ -39,3 +39,4 @@ probe/generated/
 *.iml
 Thumbs.db
 Desktop.ini
+tools/generate_ingot_textures.py
