@@ -9,19 +9,23 @@ StartupEvents.registry("fluid", event => {
 StartupEvents.registry("fluid",event => {
     //液态耀魂
     event.create("liquid_proudsoul")
-    .color(0xF3C4FF).formattedDisplayName("fluid.kubejs.liquid_proudsoul").noBucket().thinTexture(0xF3C4FF);
+    .color(0xF3C4FF).formattedDisplayName("fluid.kubejs.liquid_proudsoul").
+         noBucket().thinTexture(0xF3C4FF);
     //活化耀魂
     event.create("excited_proudsoul")
-    .color(0XD8C5FF).formattedDisplayName("fluid.kubejs.excited_proudsoul").noBucket().thinTexture(0xD8C5FF);
+        .color(0XD8C5FF).formattedDisplayName("fluid.kubejs.excited_proudsoul")
+        .noBucket().thinTexture(0xD8C5FF);
     //精制耀魂：载耀魂吸附基体在加压反应室中再生的产物，另有同名化学品（气体）形态
     event.create("refined_proudsoul")
-    .color(0xE29BFF).formattedDisplayName("fluid.kubejs.refined_proudsoul").noBucket().thinTexture(0xE29BFF);
+        .color(0xE29BFF).formattedDisplayName("fluid.kubejs.refined_proudsoul")
+        .noBucket().thinTexture(0xE29BFF);
 })
 StartupEvents.registry("fluid", event => {
     // 复合酸混合物：氯化氢 + 硫酸在化学灌注器中生成的酸性混合物，
     // 在加压反应室中以流体形态参与反应
     event.create("composite_acid_mixture")
-    .color(0xCFE86B).formattedDisplayName("fluid.kubejs.composite_acid_mixture").thinTexture(0xCFE86B).bucketColor(0xCFE86B);
+        .color(0xCFE86B).formattedDisplayName("fluid.kubejs.composite_acid_mixture")
+        .thinTexture(0xCFE86B).bucketColor(0xCFE86B);
 
     // 高活性耀魂试剂：加压反应室产物
     event.create("highly_active_proudsoul_reagent")
@@ -82,4 +86,10 @@ StartupEvents.registry("fluid", event => {
     .color(0xDAE9F2).formattedDisplayName("fluid.kubejs.ethylene_glycol").thinTexture(0xDAE9F2).bucketColor(0xDAE9F2);
     event.create("bio")
     .color(0x24EBA5).formattedDisplayName("fluid.kubejs.bio").thinTexture(0x24EBA5).bucketColor(0xDAE9F2);
+})
+StartupEvents.registry("fluid", event => {
+    // 碳氢燃料：燃料属性做在自动生成的桶物品上，燃烧时间与岩浆桶相同（20000 tick = 1000 秒）。
+    event.create("hydrocarbon_fuel")
+    .color(0xE0B04B).formattedDisplayName("fluid.kubejs.hydrocarbon_fuel").thinTexture(0xE0B04B).bucketColor(0xE0B04B)
+    .bucketItem.burnTime(20000);
 })

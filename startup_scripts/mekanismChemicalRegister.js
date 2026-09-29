@@ -30,6 +30,19 @@ StartupEvents.registry('mekanism:gas', event => {
     //（AGENTS.md 5.1 的"特殊说明"例外；后续补流体时再一起加转换配方）
     event.create('singularity_infusion')
         .color(0x8B2FC9)
+    // 精制碳（气体形态）：碳氢燃料的气体形态，流体形态见 fluidRegister.js
+    event.create("carbon")
+        .color(0x000000);
+
+    // 碳氢燃料（气体形态）：流体形态与回旋式转换配方见 fluidRegister.js / mekRecipes.js 第 15 条
+    event.create('hydrocarbon_fuel')
+        .color(0xE0B04B)
+    //以太气体（流体来自工业先锋）
+    event.create('ether_gas')
+        .color(0x4682B4)
+    //以太碳氢燃料，相变燃料前体，由以太气体与碳氢燃料在化学灌注器中生成。
+    event.create("etheral_hydrocarbon_fuel")
+        .color(0x00796B)
 })
 
 // 灌注类型：冶金灌注机使用（物品 + 灌注类型 → 物品，数量按实际值不放大），

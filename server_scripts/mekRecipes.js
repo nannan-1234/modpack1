@@ -144,8 +144,6 @@ ServerEvents.recipes(event => {
     });
 
     // 12. 灌注类型转换：1 个 AE2 奇点 → 1mb 奇点灌注液（灌注类型）
-    //     奇点由 AE2 物质凝聚器消耗 256000 个物品产出（config/ae2/common.json 的 Condenser.Singularity），
-    //     换算关系为 1 奇点 = 1mb，即消耗 N mb 的配方需要 N 个奇点——这是刻意的高价值设定，
     //     规模化产出奇点由玩家自行解决，不作为平衡问题处理。
     event.custom({
         type: 'mekanism:infusion_conversion',
@@ -159,4 +157,80 @@ ServerEvents.recipes(event => {
         'mekanism:alloy_atomic',
         '150x kubejs:singularity_infusion'
     );
+    //14:磨粉机：石油焦粉
+    event.recipes.mekanism.crushing("immersivepetroleum:petcoke_dust","immersivepetroleum:petcoke");
+        //15:氧化机：精致碳
+    event.custom({
+        "type":"mekanism:oxidizing",
+        "input":{ingredient:{"item":"mekanism:carbon"}},
+        "output":{amount:40,gas:"kubejs:carbon"}
+    });
+    //16:化学灌注器：精制碳 + 氢气 → 碳氢燃料（气体）
+    event.custom({
+        "type":"mekanism:chemical_infusing",
+        "leftInput":"1x kubejs:carbon",
+        "rightInput":"1x mekanism:hydrogen",
+        "output":"1x kubejs:hydrocarbon_fuel"
+    })
+    
+    // 15. 回旋式气液转换机：碳氢燃料（流体 ⇄ 气体）
+    //     按 AGENTS.md 5.1，化学品要有同名流体形态与对应转换配方
+    event.custom({
+        type: 'mekanism:rotary',
+        fluidInput: { amount: 1, fluid: 'kubejs:hydrocarbon_fuel' },
+        gasOutput: { amount: 1, gas: 'kubejs:hydrocarbon_fuel' },
+        gasInput: { amount: 1, gas: 'kubejs:hydrocarbon_fuel' },
+        fluidOutput: { amount: 1, fluid: 'kubejs:hydrocarbon_fuel' }
+    });
+    //18.回旋式气液转换机：以太气体（流体 ⇄ 气体）
+    event.custom({
+        type: 'mekanism:rotary',
+        fluidInput: { amount: 1, fluid: 'kubejs:ether_gas' },
+        gasOutput: { amount: 1, gas: 'kubejs:ether_gas' },
+        gasInput: { amount: 1, gas: 'kubejs:ether_gas' },
+        fluidOutput: { amount: 1, fluid: 'kubejs:ether_gas' }
+    });
+    //19.化学灌注器：以太气体 + 碳氢燃料 → 以太碳氢燃料（气体）
+    event.custom({
+        type:"mekanism:chemical_infusing",
+        leftInput:"1x kubejs:ether_gas",
+        rightInput:"1x kubejs:hydrocarbon_fuel",
+        output:"1x kubejs:etheral_hydrocarbon_fuel"
+    });
+    //20.加压反应器：以太碳氢燃料 +液态氯化氢 + 煤炭 → 含碳以太粉尘 +相变燃料
+    event.custom({
+        type:"mekanism:reaction",
+        duration:200,
+        energyRequired:1000,
+        itemInput:{ingredient:{item:"minecraft:coal"}},
+        fluidInput:{amount:40,fluid:"mekanism:hydrogen_chloride"},
+        gasInput:{amount:40,gas:"kubejs:etheral_hydrocarbon_fuel"},
+        itemOutput:{item:"kubejs:carbon_ether_dust"},
+        gasOutput:{amount:40,gas:"nannan_multiblock:phase_fuel"}
+    });
+    //21.相变控制炉：超致密锭→硬相合金锭
+    event.custom({
+        type:"phasechange:conversion"
+        ,input:{ingredient:{item:"tinkers_advanced:densium_ingot"}}
+        ,output:{item:"kubejs:durusium_ingot"},
+        min_temperature:1000,
+        max_temperature:1500,
+    }).id("phasechange:densium_to_durusium");
+    //22.相变控制炉 超致密→中相合金锭
+    event.custom({
+        type:"phasechange:conversion"
+        ,input:{ingredient:{item:"tinkers_advanced:densium_ingot"}}
+        ,output:{item:"kubejs:moderatium_ingot"},
+        min_temperature:773,
+        max_temperature:1000,
+    }).id("phasechange:densium_to_moderatium");
+    //23.相变控制炉：超致密→韧相合金锭
+    event.custom({
+        type:"phasechange:conversion"
+        ,input:{ingredient:{item:"tinkers_advanced:densium_ingot"}}
+        ,output:{item:"kubejs:lentusium_ingot"},
+        min_temperature:373.15,
+        max_temperature:773,
+    }).id("phasechange:densium_to_lentussium");
+
 });

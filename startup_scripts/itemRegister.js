@@ -59,4 +59,20 @@ StartupEvents.registry("item", event => {
     event.create("proudsoul_adsorption_substrate")
         .displayName(Component.translatable("item.kubejs.proudsoul_adsorption_substrate"))
         .texture("kubejs:item/proudsoul_adsorption_substrate")
+    // 含碳以太粉尘：颗粒堆结构取自 mekanism 污浊锇粉
+    event.create("carbon_ether_dust")
+        .displayName(Component.translatable("item.kubejs.carbon_ether_dust"))
+        .texture("kubejs:item/carbon_ether_dust")
+    //硬锭
+    event.create("durusium_ingot")
+        .displayName(Component.translatable("item.kubejs.durusium_ingot"))
+        .texture("kubejs:item/durusium_ingot")
+    //中锭
+    event.create("moderatium_ingot")
+        .displayName(Component.translatable("item.kubejs.moderatium_ingot"))
+        .texture("kubejs:item/moderatium_ingot")
+    //软锭
+    event.create("lentusium_ingot")
+        .displayName(Component.translatable("item.kubejs.lentusium_ingot"))
+        .texture("kubejs:item/lentusium_ingot")
 })
