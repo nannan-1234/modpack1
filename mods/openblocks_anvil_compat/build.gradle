@@ -1,0 +1,84 @@
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '6.0.24'
+    id 'org.spongepowered.mixin' version '0.7.38'
+}
+
+version = '1.0.3'
+group = 'com.obanvilcompat'
+base {
+    archivesName = 'openblocks_anvil_compat'
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+[
+        'libs/openblocks_reborn-1.0.2-1.20.1.jar'
+].each { path ->
+    if (!file(path).exists()) {
+        throw new GradleException("missing $path; link it from the test instance's mods directory (see README)")
+    }
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    copyIdeResources = true
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                openblocks_anvil_compat {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+mixin {
+    add sourceSets.main, 'openblocks_anvil_compat.refmap.json'
+    config 'openblocks_anvil_compat.mixins.json'
+}
+
+repositories {
+    flatDir {
+        dirs "$projectDir/libs"
+    }
+    maven {
+        name = 'MinecraftForge'
+        url = 'https://maven.minecraftforge.net/'
+    }
+    maven {
+        name = 'Sponge'
+        url = 'https://repo.spongepowered.org/repository/maven-public/'
+    }
+    mavenCentral()
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.22'
+
+    implementation(fg.deobf('local:openblocks_reborn:1.0.2-1.20.1')) {
+        transitive = false
+    }
+
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes 'MixinConfigs': 'openblocks_anvil_compat.mixins.json'
+    }
+    finalizedBy 'reobfJar'
+}

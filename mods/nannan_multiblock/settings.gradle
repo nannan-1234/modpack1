@@ -1,0 +1,11 @@
+pluginManagement {
+    repositories {
+        maven {
+            name = 'MinecraftForge'
+            url = 'https://maven.minecraftforge.net/'
+        }
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'nannan_multiblock'

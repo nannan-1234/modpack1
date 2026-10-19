@@ -1,0 +1,107 @@
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '6.0.24'
+    id 'org.spongepowered.mixin' version '0.7.38'
+}
+
+version = '1.3.0'
+group = 'com.reiryoku_expansion'
+base {
+    archivesName = 'reiryoku_expansion'
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+[
+        'libs/urushi-1.20.1-6.6.3.jar',
+        'libs/kubejs-forge-2001.6.5-build.16.jar'
+].each { path ->
+    if (!file(path).exists()) {
+        throw new GradleException("missing $path; link it from the test instance's mods directory (see README)")
+    }
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    copyIdeResources = true
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                reiryoku_expansion {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run-server')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            args '--nogui'
+            mods {
+                reiryoku_expansion {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+mixin {
+    add sourceSets.main, 'reiryoku_expansion.refmap.json'
+    config 'reiryoku_expansion.mixins.json'
+}
+
+repositories {
+    flatDir {
+        dirs "$projectDir/libs"
+    }
+    maven {
+        name = 'MinecraftForge'
+        url = 'https://maven.minecraftforge.net/'
+    }
+    maven {
+        name = 'ModMaven'
+        url = 'https://modmaven.dev/'
+    }
+    maven {
+        name = 'Sponge'
+        url = 'https://repo.spongepowered.org/repository/maven-public/'
+    }
+    mavenCentral()
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.22'
+
+    implementation(fg.deobf('appeng:appliedenergistics2-forge:15.4.10')) {
+        transitive = false
+    }
+    implementation(fg.deobf('local:urushi:1.20.1-6.6.3')) {
+        transitive = false
+    }
+    compileOnly(fg.deobf('local:kubejs-forge:2001.6.5-build.16')) {
+        transitive = false
+    }
+
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes 'MixinConfigs': 'reiryoku_expansion.mixins.json'
+    }
+    finalizedBy 'reobfJar'
+}
