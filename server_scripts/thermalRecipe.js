@@ -1,3 +1,5 @@
+//热力机器的配方。
+//所有合金都应该有一个热力的配方，一个反应仓的配方。
 ServerEvents.recipes(event => {
     //铬钼钢粗胚
     event.recipes.thermal.smelter("kablade:crude_chromoly",['kablade:chromium_ingot','kablade:molybdenum_ingot','#forge:ingots/steel'])

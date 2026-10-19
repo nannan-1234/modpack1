@@ -1,3 +1,6 @@
+//矿脉提取器脚本。
+//已知bug 待修改：execute in ${recordedDimension} run ie mineral setDepletion 38400 ${originalX} ${originalZ}命令的执行时间需调整到写入矿脉记录的时间点后。等项目后期回头修改。
+
 const EXTRACTOR_ID = 'kubejs:mineral_extractor';
 const CORE_SAMPLE_ID = 'immersiveengineering:coresample';
 const RECORD_LIST_KEY = 'storedRecords';

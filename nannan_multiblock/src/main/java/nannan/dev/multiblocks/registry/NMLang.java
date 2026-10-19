@@ -22,6 +22,8 @@ public enum NMLang implements ILangEntry {
     VALVE_MODE_OUTPUT_PRODUCT("valve_mode." + NannanMultiblocks.MODID + ".output_product"),
     VALVE_MODE_OUTPUT_COOLANT("valve_mode." + NannanMultiblocks.MODID + ".output_coolant"),
     CONTROL_FURNACE(NannanMultiblocks.MODID + ".control_furnace"),
+    /** 创造模式物品栏页的标题。 */
+    CREATIVE_TAB("creative_tab." + NannanMultiblocks.MODID + ".main"),
 
     // 方块实体的 getDisplayName() 用 "container.<modid>.<方块注册名>" 这个键（Mekanism 约定），
     // 少了它界面上会直接显示原始键名（如 container.nannan_multiblock.control_furnace_controller）。

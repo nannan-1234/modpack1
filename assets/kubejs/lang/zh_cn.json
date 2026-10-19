@@ -56,6 +56,9 @@
   "infuse_type.kubejs.singularity_infusion":"奇点灌注液",
   "gas.kubejs.singularity_infusion":"奇点灌注液",
   "gas.kubejs.hydrocarbon_fuel":"碳氢燃料",
+  "gas.kubejs.liquid_proudsoul":"液态耀魂",
+  "gas.kubejs.molten_chromoly":"熔融铬钼钢",
+  "gas.kubejs.molten_activated_chromatic_steel":"熔融活化彩钢",
   "fluid.kubejs.hydrocarbon_fuel":"碳氢燃料",
   "item.kubejs.hydrocarbon_fuel_bucket":"碳氢燃料桶",
   "item.kubejs.polymer_adsorption_substrate":"聚合物复合吸附基体",
@@ -64,5 +67,6 @@
   "item.kubejs.carbon_ether_dust":"含碳以太粉尘",
   "item.kubejs.durusium_ingot":"硬相合金锭",
   "item.kubejs.moderatium_ingot":"中相合金锭",
-  "item.kubejs.lentusium_ingot":"韧相合金锭"
+  "item.kubejs.lentusium_ingot":"韧相合金锭",
+  "item.kubejs.fluix_osgloglas_ingot":"萤耀通量合金锭"
 }

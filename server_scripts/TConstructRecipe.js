@@ -1,3 +1,4 @@
+//匠魂的浇筑，合金，熔融配方
 ServerEvents.recipes(event => {
     let steelIngots = Ingredient.of('#forge:ingots/steel').stacks;
     const {tconstruct} = event.recipes;

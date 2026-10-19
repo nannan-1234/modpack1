@@ -34,9 +34,9 @@ ItemEvents.rightClicked(TELEPORTER_ID, event => {
         player.tell(Text.green('正在前往采矿维度…'));
         player.teleportTo(
             MINING_DIMENSION_ID,
-            player.x,
-            MINING_ENTRY_Y,
-            player.z,
+            0,
+            210,
+            0,
             player.yaw,
             player.pitch
         );

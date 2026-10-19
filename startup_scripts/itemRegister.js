@@ -75,4 +75,8 @@ StartupEvents.registry("item", event => {
     event.create("lentusium_ingot")
         .displayName(Component.translatable("item.kubejs.lentusium_ingot"))
         .texture("kubejs:item/lentusium_ingot")
+    //萤耀通量合金
+    event.create("fluix_osgloglas_ingot")
+        .displayName(Component.translatable("item.kubejs.fluix_osgloglas_ingot"))
+        .texture("kubejs:item/fluix_osgloglas_ingot")
 })

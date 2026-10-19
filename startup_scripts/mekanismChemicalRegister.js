@@ -4,7 +4,7 @@
 // - 化学品属于注册表内容，只在 startup 阶段注册，新增或改名后必须重启游戏，/reload 不会生效。
 // - 未调用 .texture(...) 时沿用 Mekanism 默认贴图（气体 mekanism:liquid/liquid、
 //   灌注类型 mekanism:infuse_type/base），靠 .color(...) 染色，Mekanism 自带化学品也是这个做法。
-// - 按 AGENTS.md 5.1：化学品要有同名流体形态；气体的互转用回旋式气液转换机（配方见 mekRecipes.js），
+// - 化学品要有同名流体形态；气体的互转用回旋式气液转换机（配方见 mekRecipes.js），
 //   灌注类型没有回旋式转换，改用物品 → 灌注类型（mekanism:infusion_conversion）配方。
 // - 写法与踩坑记录见 docs/kubejs_mekanism_notes.md 第 2、3 节。
 StartupEvents.registry('mekanism:gas', event => {
@@ -43,6 +43,18 @@ StartupEvents.registry('mekanism:gas', event => {
     //以太碳氢燃料，相变燃料前体，由以太气体与碳氢燃料在化学灌注器中生成。
     event.create("etheral_hydrocarbon_fuel")
         .color(0x00796B)
+    //fluix 添加剂 无流体形式 mek no.27
+    event.create("fluix_adder")
+        .color(0xB957F9)
+
+    // 以下三个气体是给"Mek 版 Thermal 耀魂配方"做中转的：
+    // 反向则是 流体→气体(回旋式) → 物品(结晶器)。颜色与对应流体一致，方便在 JEI 里对上号。
+    event.create('liquid_proudsoul')          // 对应流体 kubejs:liquid_proudsoul
+        .color(0xF3C4FF)
+    event.create('molten_chromoly')           // 对应流体 kubejs:molten_chromoly
+        .color(0xECE4FF)
+    event.create('molten_activated_chromatic_steel') // 对应匠艺流体 tinkers_advanced:molten_activated_chromatic_steel
+        .color(0x9FE8FF)
 })
 
 // 灌注类型：冶金灌注机使用（物品 + 灌注类型 → 物品，数量按实际值不放大），

@@ -2,6 +2,7 @@ package nannan.dev.multiblocks;
 
 import nannan.dev.multiblocks.registry.NMBlocks;
 import nannan.dev.multiblocks.registry.NMContainers;
+import nannan.dev.multiblocks.registry.NMCreativeTabs;
 import nannan.dev.multiblocks.registry.NMGases;
 import nannan.dev.multiblocks.registry.NMRecipes;
 import nannan.dev.multiblocks.registry.NMTiles;
@@ -30,6 +31,7 @@ public final class NannanMultiblocks {
         NMGases.register(modBus);
         NMContainers.register(modBus);
         NMRecipes.register(modBus);
+        NMCreativeTabs.register(modBus);
         // 自建网络通道：速率滑块与页面切换（Mekanism 的包体系加不了我们自己的类型）。
         NMNetwork.register();
     }

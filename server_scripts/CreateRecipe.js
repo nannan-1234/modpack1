@@ -1,3 +1,5 @@
+//机械动力的配方
+//序列装配和动力合成。
 const incompleteblade = "last_smith:blade_unfinished_2";
 const steelIngots = Ingredient.of('#forge:ingots/steel');
 

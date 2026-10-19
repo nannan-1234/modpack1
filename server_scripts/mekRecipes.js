@@ -1,17 +1,5 @@
-// Mekanism 配方：吸附基体系列、精制耀魂，以及后续的复合酸/彩虹化合物链
-//
-// 流程：
-//   聚丙烯片 + 石墨焦粉 --融合机--> 聚合物复合吸附基体
-//   聚合物复合吸附基体 + 40mb 活化耀魂（灌注类型）--冶金灌注机--> 载耀魂吸附基体
-//   载耀魂吸附基体 + 氯化氢 + 氧气 --加压反应室--> 精制耀魂 + 聚合物复合吸附基体
-//   耀魂宝珠 --灌注类型转换--> 120mb 活化耀魂（灌注类型）
-//   氯化氢 + 硫酸 --化学灌注器--> 复合酸混合物（气体）
-//   活化彩钢板 + 40mb 复合酸混合物 + 40mb 精制耀魂 --加压反应室--> 彩虹化合物 + 高活性耀魂试剂
-//   彩虹化合物 + 60mb 活化耀魂（灌注类型）--冶金灌注机--> 活化彩钢板
-//   1 个 AE2 奇点 --灌注类型转换--> 1mb 奇点灌注液（灌注类型）
-//   原子合金 + 150mb 奇点灌注液（灌注类型）--冶金灌注机--> 超致密锭
-//   各化学品的气体 ⇄ 流体 --回旋式气液转换机--> 双向转换（AGENTS.md 5.1 的化学品配套约定）
-//
+// Mekanism 配方，和自定义多方块结构配方。
+///
 // 配方类型与写法：
 //   融合机（Combiner，mekanism:combining）：脚本 schema 可用，直接调用
 //   冶金灌注机（Metallurgic Infuser，mekanism:metallurgic_infusing）：脚本 schema 可用，直接调用
@@ -234,5 +222,157 @@ ServerEvents.recipes(event => {
         min_temperature:373.15,
         max_temperature:773,
     }).id("phasechange:densium_to_lentussium");
+    //24.相变控制炉：煤炭→石油焦
+    event.custom({
+        type:"phasechange:conversion"
+        ,input:{item:"minecraft:coal"}
+        ,output:{item:"immersivepetroleum:petcoke"},
+        min_temperature:373.15,
+        max_temperature:773,
+    }).id("phasechange:coal_to_petcoke");
+    //25.相变控制炉：煤炭→钻石
+    event.custom({
+        type:"phasechange:conversion"
+        ,input:{item:"minecraft:coal"}
+        ,output:{item:"minecraft:diamond"},
+        min_temperature:773,
+        max_temperature:1173,
+    }).id("phasechange:coal_to_diamond");
+    //26.相变控制炉：煤炭→神能晶
+    event.custom({
+        type:"phasechange:conversion"
+        ,input:{item:"minecraft:coal"}
+        ,output:{item:"aether:ambrosium_shard"},
+        min_temperature:1173,
+        max_temperature:1473,
+    }).id("phasechange:ambrosium_shard");
+    //27.福鲁伊克斯添加剂 化学溶解室
+    // 参数顺序是 (输出, 气体输入, 物品输入)；原先第 2、3 个参数写反了（把物品当成气体、气体当成物品）
+    // 注意：这里的"输出"用的是 BoxedChemicalOutput 组件（MekComponents$3），
+    // 只接受映射写法 { gas/slurry: id, amount: n } 或原生 ChemicalStack，
+    // 不接受 '1x id' 这种字符串简写（会报 Unable to cast ... to 'unknown'）。
+    event.recipes.mekanism.dissolution(
+        { gas: 'kubejs:fluix_adder', amount: 1 },
+        '1x kubejs:highly_active_proudsoul_reagent',
+        '1x ae2:fluix_crystal'
+    );
+    //28.萤耀通量合金 加压反应室
+    event.custom({
+        type:"mekanism:reaction",
+        duration:200,
+        energyRequired:1000,
+        itemInput:{ingredient:{item:'tinkers_advanced:osgloglas_ingot'}},
+        fluidInput:{amount:100,fluid:"minecraft:water"},
+        gasInput:{amount:100,gas:"kubejs:fluix_adder"},
+        itemOutput:{item:"kubejs:fluix_osgloglas_ingot"},
+        gasOutput:{amount:40,gas:"kubejs:liquid_proudsoul"}
+    })
 
-});
+    // ======== Thermal 耀魂配方的 Mek 版本 ========
+
+    // 29–31. 回旋式：三个新气体与对应流体互转（活化耀魂早在第 8 条已有）
+    event.custom({
+        type: 'mekanism:rotary',
+        fluidInput: { amount: 1, fluid: 'kubejs:liquid_proudsoul' },
+        gasOutput: { amount: 1, gas: 'kubejs:liquid_proudsoul' },
+        gasInput: { amount: 1, gas: 'kubejs:liquid_proudsoul' },
+        fluidOutput: { amount: 1, fluid: 'kubejs:liquid_proudsoul' }
+    });
+    event.custom({
+        type: 'mekanism:rotary',
+        fluidInput: { amount: 1, fluid: 'kubejs:molten_chromoly' },
+        gasOutput: { amount: 1, gas: 'kubejs:molten_chromoly' },
+        gasInput: { amount: 1, gas: 'kubejs:molten_chromoly' },
+        fluidOutput: { amount: 1, fluid: 'kubejs:molten_chromoly' }
+    });
+    // 跨命名空间：气体是我们注册的，流体是匠艺自带的
+    event.custom({
+        type: 'mekanism:rotary',
+        fluidInput: { amount: 1, fluid: 'tinkers_advanced:molten_activated_chromatic_steel' },
+        gasOutput: { amount: 1, gas: 'kubejs:molten_activated_chromatic_steel' },
+        gasInput: { amount: 1, gas: 'kubejs:molten_activated_chromatic_steel' },
+        fluidOutput: { amount: 1, fluid: 'tinkers_advanced:molten_activated_chromatic_steel' }
+    });
+
+    // 32–34. 氧化机：对应热力熔炼炉的两条液态耀魂配方与铬钼锭熔融
+    //   耀魂碎片 → 100mb、破碎的耀魂 → 25mb、铬钼锭 → 90mb（数量与 thermalRecipe.js 一致）
+    event.custom({
+        type: 'mekanism:oxidizing',
+        input: { ingredient: { item: 'slashblade:proudsoul' } },
+        output: { amount: 100, gas: 'kubejs:liquid_proudsoul' }
+    });
+    event.custom({
+        type: 'mekanism:oxidizing',
+        input: { ingredient: { item: 'slashblade:proudsoul_tiny' } },
+        output: { amount: 25, gas: 'kubejs:liquid_proudsoul' }
+    });
+    event.custom({
+        type: 'mekanism:oxidizing',
+        input: { ingredient: { item: 'kablade:chromoly_ingot' } },
+        output: { amount: 90, gas: 'kubejs:molten_chromoly' }
+    });
+
+    // 35–36. 结晶器：对应热力冷却器的两条（气体 → 物品）
+    //   90mb 熔融活化彩钢 → 活化彩钢板；360mb 熔融铬钼 → 铬钼钢球
+    //   注意：结晶器没有模具概念，热力版用到的板模/球模在这里不消耗
+    event.recipes.mekanism.crystallizing(
+        'gas',
+        'tinkers_advanced:activated_chromatic_steel',
+        { gas: 'kubejs:molten_activated_chromatic_steel', amount: 90 }
+    );
+    event.recipes.mekanism.crystallizing(
+        'gas',
+        'kubejs:chromoly_steel_ball',
+        { gas: 'kubejs:molten_chromoly', amount: 360 }
+    );
+
+    // 37–40. 加压反应室：thermalRecipe.js 里剩下的四条耀魂配方
+    //   热力的酿造机/装瓶机是"流体+物品→流体/物品"，Mekanism 没有对应机器，
+    //   按需求统一改成"物品 + 化学品(气体) → …"并补一个水槽走 PRC；
+    //   数量与热力版一致，energyRequired 按热力版总耗能 ÷ duration 折算。
+
+    // 37. 活化耀魂（对应热力酿造机）：铬钼锭 + 200mb 液态耀魂(气体) + 水 → 100mb 活化耀魂(气体)
+    event.custom({
+        type: 'mekanism:reaction',
+        duration: 20,
+        energyRequired: 200,          // 4000 FE / 20 tick
+        itemInput: { ingredient: { item: 'kablade:chromoly_ingot' } },
+        fluidInput: { amount: 100, fluid: 'minecraft:water' },
+        gasInput: { amount: 200, gas: 'kubejs:liquid_proudsoul' },
+        gasOutput: { amount: 100, gas: 'kubejs:excited_proudsoul' }
+    });
+
+    // 38. 耀魂宝珠（对应热力装瓶机）：铬钼钢球 + 300mb 活化耀魂(气体) + 水 → 1 耀魂宝珠
+    event.custom({
+        type: 'mekanism:reaction',
+        duration: 100,
+        energyRequired: 160,          // 16000 FE / 100 tick
+        itemInput: { ingredient: { item: 'kubejs:chromoly_steel_ball' } },
+        fluidInput: { amount: 100, fluid: 'minecraft:water' },
+        gasInput: { amount: 300, gas: 'kubejs:excited_proudsoul' },
+        itemOutput: { item: 'slashblade:proudsoul_sphere' }
+    });
+
+    // 39. 魂樱（对应热力装瓶机）：樱花原木 + 25mb 液态耀魂(气体) + 水 → 1 魂樱
+    event.custom({
+        type: 'mekanism:reaction',
+        duration: 20,
+        energyRequired: 50,           // 1000 FE / 20 tick
+        itemInput: { ingredient: { item: 'minecraft:cherry_log' } },
+        fluidInput: { amount: 100, fluid: 'minecraft:water' },
+        gasInput: { amount: 25, gas: 'kubejs:liquid_proudsoul' },
+        itemOutput: { item: 'last_smith:sakura' }
+    });
+
+    // 40. 熔融活化彩钢（对应热力酿造机）：彩虹化合物 + 100mb 活化耀魂(气体) + 水 → 90mb 熔融活化彩钢(气体)
+    event.custom({
+        type: 'mekanism:reaction',
+        duration: 60,
+        energyRequired: 667,          // 40000 FE / 60 tick
+        itemInput: { ingredient: { item: 'rainbowcompound:rainbow_compound' } },
+        fluidInput: { amount: 100, fluid: 'minecraft:water' },
+        gasInput: { amount: 100, gas: 'kubejs:excited_proudsoul' },
+        gasOutput: { amount: 90, gas: 'kubejs:molten_activated_chromatic_steel' }
+    });
+})
+

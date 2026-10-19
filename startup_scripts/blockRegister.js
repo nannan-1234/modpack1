@@ -1,3 +1,5 @@
+//方块注册
+//其实要注册的方块不多
 StartupEvents.registry("block",event =>{
     event.create("polymetallic_complex_ore")
     .requiresTool(true)

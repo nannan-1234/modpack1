@@ -14,6 +14,7 @@
   "valve_mode.nannan_multiblock.output_product": "输出产物（物品）",
   "valve_mode.nannan_multiblock.output_coolant": "输出冷却剂",
   "nannan_multiblock.control_furnace": "相变控制炉",
+  "creative_tab.nannan_multiblock.main": "相变控制炉",
   "container.nannan_multiblock.control_furnace_casing": "相变控制炉",
   "container.nannan_multiblock.control_furnace_controller": "相变控制炉",
   "container.nannan_multiblock.control_furnace_valve": "相变控制炉",

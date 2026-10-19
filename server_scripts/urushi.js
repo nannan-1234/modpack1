@@ -1,3 +1,4 @@
+//漆mod的配方。
 ServerEvents.recipes(event =>{
     event.recipes.reiryoku_expansion.hokora_fuel('earth', 'minecraft:apple', 10, 50);
     event.recipes.urushi.earth_element_tier1_crafting(

@@ -1,3 +1,4 @@
+//流体注册。
 StartupEvents.registry("fluid", event => {
     event.create("molten_proudsoul")
     .color(0xFFB6C1).formattedDisplayName("fluid.kubejs.molten_proudsoul").thickTexture(0xFFB6C1)

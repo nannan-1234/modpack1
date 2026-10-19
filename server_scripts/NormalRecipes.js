@@ -1,24 +1,4 @@
-/*ServerEvents.recipes(event =>
-    event.recipes.minecraft.shaped("slashblade:slashblade",[
-        "FEB",
-        "DAG",
-        "ACH"
-    ],{
-        "B":"last_smith:blade",
-        "A":"slashblade:proudsoul_ingot",
-        "C":"slashblade:slashblade_white",
-        "D":"slashblade:slashblade_silverbamboo",
-        "E":"botania:blaze_block",
-        "F":"minecraft:iron_block",
-        "G":"minecraft:lapis_block",
-        "H":"minecraft:gold_block"
-    }
-        
-    
-
-)
-)
-*/
+//这里是工作台的配方，编写了普通的有序/无序配方，和无尽贪婪配方。
 const num =1;
 ServerEvents.recipes(event => {
     event.shapeless("last_smith:blade",[
@@ -44,8 +24,29 @@ ServerEvents.recipes(event => {
         "A":'#forge:ingots/steel',
         "B":'#forge:glass',
         "C":'#forge:gears/tin'
-    })
+    });
     event.replaceInput({"input":"industrialforegoing:plastic"},"industrialforegoing:plastic","mekanism:hdpe_sheet")
+    event.shaped('nannan_multiblock:control_furnace_controller',[
+        " A ",
+        "ABA",
+        " A "
+    ],{
+        "A":"minecraft:redstone",
+        "B":"nannan_multiblock:control_furnace_casing"
+    });
+    event.shapeless('nannan_multiblock:control_furnace_valve',[
+        "nannan_multiblock:control_furnace_casing","mekanism:ultimate_control_circuit"
+    ]);
+    event.shaped("draconicevolution:wyvern_energy_core",[
+        "ABA",
+        "BCB",
+        "ABA"
+    ],{
+        "A":"draconicevolution:draconium_ingot",
+        "B":"appflux:charged_redstone",
+        "C":"draconicevolution:wyvern_core"
+    })
+
 })
 ServerEvents.recipes(event =>{
     //可疑的彩色锭
@@ -131,6 +132,46 @@ ServerEvents.recipes(event =>{
             "F":"thermal:machine_frame",
             "G":'immersiveengineering:plate_duroplast',
             "H":'kubejs:polyethylene_terephthalate'
+        }
+    )
+    //相变控制炉外壳
+    event.recipes.avaritia.shaped_table(3,'nannan_multiblock:control_furnace_casing',
+        [
+            "ABBBBBA",
+            "BCDDDCB",
+            "BDEFEDB",
+            "BDFGFDB",
+            "BDEFEDB",
+            "BCDDDCB",
+            "ABBBBBA"
+
+        ],{
+            "A":'draconicevolution:wyvern_energy_core',
+            "B":"mekanism:hdpe_sheet",
+            "C":'mekanism:alloy_atomic',
+            "D":'tinkers_advanced:densium_ingot',
+            "E":'tinkers_advanced:activated_chromatic_steel',
+            "F":"mekanism:steel_casing",
+            //"G":"ironfurnaces:million_furnace"
+            "G":'industrialforegoing:machine_frame_advanced'
+        }
+    )
+    event.recipes.avaritia.shaped_table(3,'nannan_multiblock:control_furnace_core',
+        [
+            "ABBBBBA",
+            "BCDDDCB",
+            "BDCFCDB",
+            "BDFGFDB",
+            "BDCFCDB",
+            "BCDDDCB",
+            "ABBBBBA"
+        ],{
+            "A":"mekanism:hdpe_sheet",
+            "B":'#forge:plates/lead',
+            "C":'draconicevolution:wyvern_energy_core',
+            "D":'tinkers_advanced:densium_ingot',
+            "F":"mekanism:steel_casing",
+            "G":"ironfurnaces:million_furnace"
         }
     )
 })

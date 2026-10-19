@@ -22,17 +22,21 @@
 // 带 NBT 的输入（匠魂小刀条）用 forge:partial_nbt 表达，与脚本里的
 // Item.of('tconstruct:small_blade', '{Material:"..."}').weakNBT() 等价
 // （KubeJS 的 weakNBT 内部就是 Forge 的 PartialNBTIngredient）。
-const reactionChamberEnergy_s = 100000; // 200000 FE
+const reactionChamberEnergy_s = 200000; // 400000 FE
 const reactionChamberEnergy_m = 1000000;
-const reactionChamberEnergy_l = 10000000;
+const reactionChamberEnergy_l = 10000000;//可能需要后期修改。
 // 注意：这个变量在下面的配方里会被临时改写（15 用 8、16 用 64），所以必须是 let
 let reactionChamberOutputCount = 32;
-const Water = { fluidStack: { FluidName: 'minecraft:water', Amount: 100 } };
+//水。默认值100。
+const Water = (Amount) => ({ fluidStack: { FluidName: 'minecraft:water', Amount: Amount } });
+//岩浆
+const Lava = (Amount) => ({ fluidStack: { FluidName: 'minecraft:lava', Amount: Amount } });
 const smallBladeIron = { type: 'forge:partial_nbt', item: 'tconstruct:small_blade', nbt: '{Material:"tconstruct:iron"}' };
 const smallBladeSteel = { type: 'forge:partial_nbt', item: 'tconstruct:small_blade', nbt: '{Material:"tconstruct:steel"}' };
+//高活性耀魂试剂的箭头函数。
 const ha_proudsoul = Amount => ({fluidStack: {FluidName: "kubejs:highly_active_proudsoul_reagent",Amount:Amount}});
 
-// 反应仓输出的 GenericStack 形式：一次 32 个指定物品
+// 反应仓输出的 GenericStack 形式
 const reactionOutput = itemId => ({ '#': reactionChamberOutputCount, '#c': 'ae2:i', id: itemId });
 
 ServerEvents.recipes(event => {
@@ -40,7 +44,7 @@ ServerEvents.recipes(event => {
     event.custom({
         type: 'advanced_ae:reaction',
         energy: reactionChamberEnergy_s,
-        fluid: Water,
+        fluid: Water(100),
         input_items: [
             { amount: 32, ingredient: { item: 'kablade:chromium_ingot' } },
             { amount: 32, ingredient: { item: 'kablade:molybdenum_ingot' } },
@@ -53,7 +57,7 @@ ServerEvents.recipes(event => {
     event.custom({
         type: 'advanced_ae:reaction',
         energy: reactionChamberEnergy_s,
-        fluid: Water,
+        fluid: Water(100),
         input_items: [
             { amount: 32, ingredient: { item: 'slashblade:proudsoul_ingot' } },
             { amount: 32, ingredient: smallBladeIron }
@@ -65,7 +69,7 @@ ServerEvents.recipes(event => {
     event.custom({
         type: 'advanced_ae:reaction',
         energy: reactionChamberEnergy_s,
-        fluid: Water,
+        fluid: Water(100),
         input_items: [
             { amount: 32, ingredient: { tag: 'forge:ingots/steel' } },
             { amount: 32, ingredient: { item: 'last_smith:blade_unfinished_1' } }
@@ -77,7 +81,7 @@ ServerEvents.recipes(event => {
     event.custom({
         type: 'advanced_ae:reaction',
         energy: reactionChamberEnergy_s,
-        fluid: Water,
+        fluid: Water(100),
         input_items: [
             { amount: 32, ingredient: { item: 'slashblade:proudsoul_sphere' } },
             { amount: 32, ingredient: { item: 'last_smith:sakura_full' } },
@@ -90,7 +94,7 @@ ServerEvents.recipes(event => {
     event.custom({
         type: 'advanced_ae:reaction',
         energy: reactionChamberEnergy_s,
-        fluid: Water,
+        fluid: Water(100),
         input_items: [
             { amount: 32, ingredient: { item: 'slashblade:proudsoul_sphere' } },
             { amount: 32, ingredient: { item: 'last_smith:sakura_steel_ingot' } },
@@ -103,7 +107,7 @@ ServerEvents.recipes(event => {
     event.custom({
         type: 'advanced_ae:reaction',
         energy: reactionChamberEnergy_s,
-        fluid: Water,
+        fluid: Water(100),
         input_items: [
             { amount: 32, ingredient: { item: 'last_smith:blade_sakura_unfinished_1' } },
             { amount: 32, ingredient: { item: 'last_smith:sakura_steel_ingot' } },
@@ -116,7 +120,7 @@ ServerEvents.recipes(event => {
     event.custom({
         type: 'advanced_ae:reaction',
         energy: reactionChamberEnergy_s,
-        fluid: Water,
+        fluid: Water(100),
         input_items: [
             { amount: 64, ingredient: { tag: 'forge:ingots/steel' } },
             { amount: 32, ingredient: { tag: 'forge:rods/blaze' } }
@@ -128,7 +132,7 @@ ServerEvents.recipes(event => {
     event.custom({
         type: 'advanced_ae:reaction',
         energy: reactionChamberEnergy_s,
-        fluid: Water,
+        fluid: Water(100),
         input_items: [
             // 4×32 = 128，单槽放不下，拆成两条 64
             { amount: 64, ingredient: { item: 'minecraft:chorus_fruit' } },
@@ -143,7 +147,7 @@ ServerEvents.recipes(event => {
     event.custom({
         type: 'advanced_ae:reaction',
         energy: reactionChamberEnergy_s,
-        fluid: Water,
+        fluid: Water(100),
         input_items: [
             { amount: 64, ingredient: { item: 'minecraft:slime_block' } },
             { amount: 64, ingredient: { tag: 'forge:ingots/steel' } }
@@ -155,7 +159,7 @@ ServerEvents.recipes(event => {
     event.custom({
         type: 'advanced_ae:reaction',
         energy: reactionChamberEnergy_s,
-        fluid: Water,
+        fluid: Water(100),
         input_items: [
             { amount: 64, ingredient: { item: 'mekanism:ingot_refined_glowstone' } },
             { amount: 64, ingredient: { tag: 'forge:ingots/gold' } }
@@ -167,7 +171,7 @@ ServerEvents.recipes(event => {
     event.custom({
         type: 'advanced_ae:reaction',
         energy: reactionChamberEnergy_s,
-        fluid: Water,
+        fluid: Water(100),
         input_items: [
             // 4×32 = 128，单槽放不下，拆成两条 64
             { amount: 64, ingredient: { item: 'minecraft:ice' } },
@@ -182,7 +186,7 @@ ServerEvents.recipes(event => {
     event.custom({
         type: 'advanced_ae:reaction',
         energy: reactionChamberEnergy_s,
-        fluid: Water,
+        fluid: Water(100),
         input_items: [
             { amount: 64, ingredient: { item: 'minecraft:nether_brick' } },
             { amount: 64, ingredient: { item: 'minecraft:nether_wart_block' } },
@@ -195,7 +199,7 @@ ServerEvents.recipes(event => {
     event.custom({
         type: 'advanced_ae:reaction',
         energy: reactionChamberEnergy_s,
-        fluid: Water,
+        fluid: Water(100),
         input_items: [
             { amount: 64, ingredient: { tag: 'forge:mushrooms' } },
             { amount: 64, ingredient: { item: 'minecraft:nether_brick' } },
@@ -203,12 +207,13 @@ ServerEvents.recipes(event => {
         ],
         output: reactionOutput('rainbowcompound:warpedite_ingot')
     });
+    
 
     // 14. 彩虹化合物：可疑的彩色锭 + 耀魂宝珠 + 魂樱钢锭
     event.custom({
         type: 'advanced_ae:reaction',
         energy: reactionChamberEnergy_m,
-        fluid: Water,
+        fluid: Water(100),
         input_items: [
             { amount: 32, ingredient: { item: 'rainbowcompound:strange_colored_ingot' } },
             { amount: 32, ingredient: { item: 'slashblade:proudsoul_sphere' } },
@@ -223,7 +228,7 @@ ServerEvents.recipes(event => {
         energy:reactionChamberEnergy_m,
         fluid:ha_proudsoul("640"),
         input_items:[
-            {amount:16,ingredient:{item:'draconicevolution:draconium_core'}},
+            {amount:8,ingredient:{item:'draconicevolution:draconium_core'}},
             {amount:8,ingredient:{item:"minecraft:nether_star"}},
             {amount:24,ingredient:{item:'megacells:sky_steel_ingot'}},
         ],
@@ -242,6 +247,20 @@ ServerEvents.recipes(event => {
         ],
         output:reactionOutput('ae2:sky_stone_block')
     });
+    //17:锇萤黑曜合金 
+    reactionChamberOutputCount = 32;
+    event.custom({
+        type:"advanced_ae:reaction",
+        energy:reactionChamberEnergy_s,
+        fluid:Lava(500),
+        input_items:[
+            {amount:32,ingredient:{item:"mekanism:ingot_osmium"}},
+            {amount:64,ingredient:{item:"mekanism:ingot_refined_obsidian"}},
+            {amount:64,ingredient:{item:"mekanism:ingot_refined_glowstone"}},
+            {amount:64,ingredient:{item:"mekanism:ingot_refined_glowstone"}},
+        ],
+        output:reactionOutput('tinkers_advanced:osgloglas_ingot')
+    })
 });
 
 
